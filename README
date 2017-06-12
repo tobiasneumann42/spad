@@ -1,6 +1,17 @@
 Prototype of SPAD protocol 
 Includes sample database and node js micro service 
 
-author: tobias neumann, tneumann(at)leder-neumann.de
+author: tobias neumann, tneumann@leder-neumann.de
 published: June 12, 2017
+
+docker images are available from hub (published soon, private for now)
+
+docker pull tobias42/spad_micro
+docker pull tobias42/spad_db
+
+docker run --name spad_db tobias42/spad_db
+docker run --name spad_micro -p 8443:8443 --link spad_db:db -e DATABASE_HOST=db tobias42/spad_micro
+
+
+
 
