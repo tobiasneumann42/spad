@@ -1,0 +1,13 @@
+version: '2'
+services:
+    spad_micro:
+      build: ./spad_micro
+      ports: 
+       - "8443:8443"
+      depends_on:
+       - db
+      environment:
+       - DATABASE_HOST=db
+    db:
+      build: ./spad_db
+
