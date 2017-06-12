@@ -6,6 +6,12 @@ published: June 12, 2017
 
 docker images are available from hub (published soon, private for now)
 
+requires modification of iptables to redirect requests on 443 top node js service running on 8443
+# allow inbound traffic on 443 and redirect 8443 -> node js doesn’t allow to bind to ports bellow 1023
+# as not root 
+sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8443
+
 docker pull tobias42/spad_micro
 docker pull tobias42/spad_db
 
